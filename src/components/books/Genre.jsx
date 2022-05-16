@@ -33,11 +33,11 @@ const Genre = () =>{
     
     if (data.length > 0){
         return(
-            <div>
+            <div key={data.id}>
                 <div className='row w-100 justify-content-center'>
                 <div className='card-deck ml-5'>
                 {data.map( (item , index) => 
-                             <div ClassName="col-4 mt-5  d-flex">
+                             <div key={index} className="col-4 mt-5  d-flex">
                                 <div className ="card cards">
                                     <img className="card-img cardsimg" src= {imgUrl+"/"+item.imgurl} alt="Card image" />
                                     <Link to={"/genre/" + item.id} className="stretched-link"></Link>

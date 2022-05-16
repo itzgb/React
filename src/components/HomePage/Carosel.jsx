@@ -1,26 +1,7 @@
-import axios from 'axios';
-import  { useEffect, useState } from 'react';
-import { imgUrl } from '../api/api';
-
-
-const Home = () => {
-        const [data,setData] = useState([]);
-        const fetchRecentlyAddedData=()=>{
-
-        }   
-        const fetchData =async ()=>{
-            await axios.get("book/getBooks").then(d=>{
-                console.log(d);
-                setData(d.data)
-            }).catch(err=>{console.log(err)})
-        }
-
-        useEffect(()=>{
-            fetchData();
-        },[]) 
-        return (
-           
-            <div>
+import { imgUrl } from "../../api/api";
+const Carosel = () => {
+    return(
+        <div>
                 <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
                     <ol className="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
@@ -29,13 +10,13 @@ const Home = () => {
                     </ol>
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img className="d-block w-100 h-30" src={imgUrl+"/banner1.jpg"} alt="First slide" />
+                            <img className="d-block w-100 h-30 carosel-img" src={imgUrl+"/banner1.jpg"} alt="First slide" />
                         </div>
                         <div className="carousel-item">
-                            <img className="d-block w-100" src="..." alt="Second slide" />
+                            <img className="d-block w-100 carosel-img" src={imgUrl+"/banner2.jpg"} alt="Second slide" />
                         </div>
                         <div className="carousel-item">
-                            <img className="d-block w-100" src="..." alt="Third slide" />
+                            <img className="d-block w-100 carosel-img" src={imgUrl+"/banner3.jpg"} alt="Third slide" />
                         </div>
                     </div>
                     <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -47,15 +28,7 @@ const Home = () => {
                         <span className="sr-only">Next</span>
                     </a>
                 </div>
-                <div>
-                    <p>
-                    Recently Added
-                    </p>
-                    
-                </div>
             </div>
-        );
-    
+    )
 }
- 
-export default Home;
+export default Carosel;

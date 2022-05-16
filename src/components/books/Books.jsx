@@ -1,6 +1,6 @@
 import axios from '../../axios';
 import {useState , useEffect } from 'react';
-import { getAllBookUrl ,getAllCartItemsUrl,imgUrl} from "../../api/api";
+import { getAllBookUrl ,addCartItemUrl,imgUrl} from "../../api/api";
 import {bookArr} from "../../utils/fakeData";
 import {Link ,useParams} from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
@@ -31,7 +31,13 @@ const Book = () =>{
         console.log(select.selected);
         fetchBookList(select.selected);
     }
-
+    const addToCart = async(id) =>{
+        await axios.post(addCartItemUrl , {id:id , quantity:1})
+            .then(d=>{
+                console.log("addtocart test",d);
+            })
+            .catch(e=>console.log("err",e))
+    }
     
     
     useEffect(()=>{
@@ -54,7 +60,7 @@ const Book = () =>{
                                 <div className="card-body">
                                     <p className='card-title'>Book title : {item.title}</p>
                                     <p className='card-text'>Price : {item.price}</p>
-                                    
+                                    <button className="btn btn-success book-card-button"  onClick={(e)=>{addToCart(item.id)}} >Add to Cart</button>
                                 </div>  
                             </div>
                                                         

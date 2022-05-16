@@ -1,12 +1,20 @@
 import { Navigate } from "react-router-dom";
-import {useHistory} from "react";
+import {useContext, useHistory} from "react";
+import AuthContext from "./AuthProvider";
 const Logout = () => {
-    
-    const logout =() => localStorage.clear();   
+    const {setAuth} = useContext(AuthContext)
+    const logout =() => {
+        if(localStorage.getItem('token')){
+
+            localStorage.clear();
+            setAuth({})
+        }
+    }
     return (
         <>
         {logout()}
-        < Navigate to='/login' replace />
+        
+        <Navigate to='/login' replace />
         </>
     )
 }

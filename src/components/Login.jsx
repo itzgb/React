@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import {Link , Navigate} from 'react-router-dom'
 import axios from '../axios'
 
 import '../App.css'
-const Login = ({status}) => {
+import AuthContext from './AuthProvider';
+const Login = () => {
 
 
     const [email,setEmail] = useState('')
@@ -14,7 +15,7 @@ const Login = ({status}) => {
 
     const [currentUser,setCurrentUser] = useState();
 
-    
+    const {setAuth} = useContext(AuthContext);     
 
 
 
@@ -29,9 +30,11 @@ const Login = ({status}) => {
                     headers: { 'Content-Type': 'application/json' }
                 }
             ).then(d=>{
-                status(true);
+                
                 console.log(JSON.stringify(d.data));
-                localStorage.setItem("token",JSON.stringify(d.data));
+                localStorage.setItem("token",JSON.stringify(d.data.token));
+                localStorage.setItem("user",JSON.stringify(d.data.user.role));
+                setAuth({role:d.data.user.role})
             });
             
             setPassword('');

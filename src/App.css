@@ -128,3 +128,32 @@ thead{
 .App{
   margin-top: 55px;
 }
+
+.book-card-button{
+  position:relative;
+  z-index: 3;
+}
+
+input[type='number'] {
+  -moz-appearance:textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+
+.carosel-img{
+  height:400px;
+}
+.form-wrapper{
+  
+}
+.input-container{
+
+}
+.formerrmsg{
+  font-size: smaller;
+  margin-left: 4px;
+}

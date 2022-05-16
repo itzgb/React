@@ -12,7 +12,7 @@ const AddBook = () =>{
     const[bookData,setBookData] = useState([]);
     const[genre,setGenre] = useState();
     const[endPoint,setEndPoint] = useState();
-    const[success,setSuccess] = useState();
+    const[success,setSuccess] = useState(false);
     const[errMsg,setErrMsg] = useState();
 
     let loc = useLocation();
@@ -78,7 +78,10 @@ const AddBook = () =>{
             {
                 headers: { 'Content-Type': 'multipart/form-data' }
             }
-        );
+        ).then(d=>{
+            setSuccess(true);
+        })
+        .catch(err=>console.log(err));
     
         console.log(JSON.stringify(response.data));
         
