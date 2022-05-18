@@ -65,13 +65,14 @@ const SignUpFormLayout = ({INITITAL_FORM_STATE , FORM_VALIDATION , url , childre
                             </Grid>
                         )}
                         <Grid item xs={12}>
+                            {children}
+                        </Grid>
+                        <Grid item xs={12}>
                             <ButtonWrapper>
                                 Sign Up
                             </ButtonWrapper>
                         </Grid>
-                        <Grid item xs={12}>
-                            {children}
-                        </Grid>
+                        
                     </Grid>
                 </Form>
             </Formik>

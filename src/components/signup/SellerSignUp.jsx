@@ -1,6 +1,9 @@
 import * as Yup from 'yup';
 import SignUpFormLayout from './SignUpLayout';
 import {Link} from 'react-router-dom'
+import MobileInput from '../common/FormUI/MobileInput';
+import { Grid } from '@material-ui/core';
+
 const INITITAL_FORM_STATE = {
     username:'',
     email:'',
@@ -21,6 +24,7 @@ const FORM_VALIDATION = Yup.object().shape({
     .required("Required"),
     
 })
+const url ="/seller/signup";
 const SellerSignUp = () => {
     
     return(
@@ -30,12 +34,23 @@ const SellerSignUp = () => {
         key="seller"
         INITITAL_FORM_STATE = {INITITAL_FORM_STATE}
         FORM_VALIDATION = {FORM_VALIDATION}
+        url={url}
         >
-            <div>
-                Already a member ? <Link to="/login" >Login</Link> 
-                <Link to="/signupd" >User Signup</Link>
-            </div>
+            <MobileInput/>   
         </SignUpFormLayout>
+            <div>
+                <Grid container>
+                    <Grid>
+                            Already a member ? <Link to="/login" className="btn btn-primary">Login</Link> 
+                    </Grid>
+                    
+                    <Grid>
+                        <p>
+                            Not a Buyer ?<Link to="/signup" className="btn btn-primary">User Signup</Link>
+                            </p>
+                    </Grid>
+                </Grid>
+            </div>
         </div>
     )
 }

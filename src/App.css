@@ -2,37 +2,36 @@
   position: absolute;
   left: -9999px;
 }
-.nav-bar{
+.nav-bar {
   z-index: 900;
   position: fixed;
-  top:0;
+  top: 0;
   width: 100%;
 }
 .main {
   margin-top: 30px; /* Add a top margin to avoid content overlay */
 }
-.formContainer{
-  width:320px;
+.formContainer {
+  width: 320px;
   margin-left: 30px;
-  padding :10px;
+  padding: 10px;
 }
-form{
-  padding:50px;
-  width:100%
+form {
+  padding: 50px;
+  width: 100%;
 }
-input , button , .errmsg{
+input,
+button,
+.errmsg {
   margin-top: 10px;
   width: 50%;
 }
 
-
-.card-deck{
+.card-deck {
   width: 70%;
-  padding:20px;
-  
+  padding: 20px;
 }
-.pagination{
-  
+.pagination {
 }
 
 /*
@@ -47,50 +46,47 @@ input , button , .errmsg{
   font-size:xx-large;
 }
 */
-.card-body{
-  background-color:lightgray ;
+.card-body {
+  background-color: lightgray;
 }
 
-.imgcs{
-  height:100px;
+.imgcs {
+  height: 100px;
   width: 100px;
 }
 
-.cardsimg{
-  height:180px;
+.cardsimg {
+  height: 180px;
 }
 
-.btncls{
-  width:50px;
+.btncls {
+  width: 50px;
   margin: 0 6px;
 }
 
-.card{
+.card {
   box-shadow: 1px 1px 3px 0px rgb(112, 115, 139);
-
 }
-table{
+table {
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
-thead{
+thead {
   background-color: blueviolet;
 }
-
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
   width: 0;
   height: 100%;
-  
+
   background: #000;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-
 
 .sidebar-nav {
   position: absolute;
@@ -100,7 +96,7 @@ thead{
   padding: 0;
   list-style: none;
   background-color: #000;
-  height:100%
+  height: 100%;
 }
 
 .sidebar-nav li {
@@ -117,25 +113,24 @@ thead{
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
-.wrapper{
-  left:250px; 
-  margin-left:250px;
-  
+.wrapper {
+  left: 250px;
+  margin-left: 250px;
 }
-.App{
+.App {
   margin-top: 55px;
 }
 
-.book-card-button{
-  position:relative;
+.book-card-button {
+  position: relative;
   z-index: 3;
 }
 
-input[type='number'] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 input::-webkit-outer-spin-button,
@@ -143,17 +138,21 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 
-
-.carosel-img{
-  height:400px;
+.carosel-img {
+  height: 400px;
 }
-.form-wrapper{
-  
+.form-wrapper {
 }
-.input-container{
-
+.input-container {
 }
-.formerrmsg{
+.formerrmsg {
   font-size: smaller;
   margin-left: 4px;
+}
+.cmtbox {
+  height: 100px;
+}
+
+.intl-tel-input {
+  width: 100%;
 }

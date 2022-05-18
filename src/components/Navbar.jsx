@@ -2,10 +2,13 @@ import {  Link } from "react-router-dom";
 import {useContext, useEffect, useState} from 'react'; 
 import {getToken} from '../auth/auth';
 import AuthContext from "./AuthProvider";
+import { useSelector } from "react-redux";
 const Navbar = ({auths}) => {
          
         const {auth , setAuth} = useContext(AuthContext);
-         
+        const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+        const user = useSelector(state => state.auth.user);
+        
         return (
             <>
             <div>
@@ -30,20 +33,20 @@ const Navbar = ({auths}) => {
                             </div>
                             {/* {authButton} */}
                             
-                            {auth.role ? 
+                            {isLoggedIn ? 
                             
                             <div className="navbar-nav ml-auto">
-                                {auth.role==="SELLER" && 
+                                {user.role==="SELLER" && 
                                     <li className="nav-item" >
                                         <Link to={"/seller/manage"} className="nav-link" >
                                         Manage
                                         </Link>
                                     </li>
                                 }
-                                {auth.role==="ADMIN" && 
+                                {user.role==="ADMIN" && 
                                     <li className="nav-item" >
                                         <Link to={"/admin/manage"} className="nav-link" >
-                                        Manage
+                                         Manage
                                         </Link>
                                     </li>
                                 }
@@ -59,7 +62,7 @@ const Navbar = ({auths}) => {
                                 </li>
                                 <li className="nav-item" >
                                     <Link to={"/logout"} className="nav-link"  >
-                                    Logout
+                                     Logout
                                     </Link>
                                 </li>
                             </div>

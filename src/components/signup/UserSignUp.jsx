@@ -1,6 +1,9 @@
 import * as Yup from 'yup';
 import SignUpFormLayout from './SignUpLayout';
 import {Link} from 'react-router-dom'
+import IntlTelInput from 'react-intl-tel-input';
+import MobileInput from '../common/FormUI/MobileInput';
+import { Grid } from '@material-ui/core';
 const INITITAL_FORM_STATE = {
     username:'',
     email:'',
@@ -18,7 +21,7 @@ const FORM_VALIDATION = Yup.object().shape({
     
 })
 
-const url = "";
+const url = "/signup";
 const UserSignUp = () => {
     
     return(
@@ -31,14 +34,18 @@ const UserSignUp = () => {
         url = {url}
         
         >
-            <div >
-                Already a member ? <Link to="/login" >Login</Link> 
-                <p>
-                    Not a Buyer ?<Link to="/seller/signupd" > Seller Signup</Link>
-                </p>
-                
-            </div>
+            <MobileInput/>   
         </SignUpFormLayout>
+        <div className='ml-5'>
+            <Grid >
+                Already a member ? <Link to="/login" className="btn btn-primary">Login</Link> 
+            </Grid>
+            <Grid>
+                <p>
+                    Not a Buyer ?<Link to="/seller/signup" className="btn btn-info" > Seller Signup</Link>
+                </p>
+            </Grid>
+        </div>    
         </div>
     )
 }

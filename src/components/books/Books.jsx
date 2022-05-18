@@ -4,6 +4,7 @@ import { getAllBookUrl ,addCartItemUrl,imgUrl} from "../../api/api";
 import {bookArr} from "../../utils/fakeData";
 import {Link ,useParams} from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
+import CustomerReviewWrapper from '../common/FormUI/CustomerReview/CustomerReviewWrapper';
 const Book = () =>{
     
     const route = useParams().id;
@@ -14,7 +15,6 @@ const Book = () =>{
     const limit = 9;
     const fetchBookList = async (page) =>{
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        
         const data = await axios.get( getAllBookUrl + `/${route}`+`?page=${page}&limit=${limit}` ).then(d=>{
             console.log(d);
             
@@ -67,6 +67,7 @@ const Book = () =>{
                         </div>                    
             ) } 
             </div>
+            
         </div>
         <ReactPaginate 
         previousLabel={'prev'}

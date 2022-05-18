@@ -43,9 +43,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>        
         {/* public */}        
-        <Route path="signup" element={<SignupTest user={"user"} key={"user"}/>} />
-        <Route path="signupd" element={<UserSignUp />} />
+        <Route path="signup" element={<UserSignUp />} />
         <Route path="/seller/signup" element={<SellerSignUp />} />
+        {/* <Route path="signup" element={<SignupTest user={"user"} key={"user"}/>} /> */}
         {/* <Route path="/seller/signup" element={<SignupTest user={"seller"} key={"seller"}/>} /> */}
         <Route path="login" element={<Login />} />
         <Route path="/AccessDenied" element={<AccessDenied />} />

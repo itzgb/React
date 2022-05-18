@@ -3,12 +3,18 @@ import axios from '../../axios';
 import {useParams , Link} from 'react-router-dom';
 import {bookData} from '../../utils/fakeData';
 import {getBookByIdUrl ,getAllCartItemsUrl, imgUrl , addCartItemUrl} from '../../api/api';
+import CustomerReviewWrapper from '../common/FormUI/CustomerReview/CustomerReviewWrapper';
+import CustReview from './cust_review/CustReview';
+import DisplayComments from '../common/FormUI/CustomerReview/DisplayComments';
+import { Rating } from '@material-ui/lab';
 const SingleBook = () =>{
     const params = useParams();
     const [quan,setQuan] = useState(1);
     const [loading,setLoading] = useState(true);
     const [data,setData] = useState({});
+    const [stat , setStat ] = useState(true);
 
+    
     const FetchSingleBookList =  async() =>{
         const data = await axios.get( getBookByIdUrl+`/${params.id}`)
             .then(d=>{
@@ -38,6 +44,9 @@ const SingleBook = () =>{
     useEffect(()=>{
         FetchSingleBookList()
     },[])
+    useEffect(()=>{
+        FetchSingleBookList()
+    },[stat])
     return(
         <>{loading ? 
             <div>Loading</div>
@@ -56,6 +65,10 @@ const SingleBook = () =>{
                     <div className="col-5">
                         <div className='display-4'>{data.title}</div>
                         <div className='text-muted'>{data.genre.genre}</div>
+                        <Rating 
+                                name="read-only"
+                                value={4}
+                            />
                         <div className='h5'> sold by {data.user.company}</div>
                         <hr />
                         <div>Description : {data.desc}</div>
@@ -75,6 +88,17 @@ const SingleBook = () =>{
                             </button>
                         </div>
                         <button className="btn btn-success" onClick={(e)=>{addToCart(data.id)}} >Add to Cart</button>
+                        <div className='container'>
+                        <CustReview 
+                            setStat = {setStat}
+                            stat ={stat}
+                            >
+
+                            </CustReview>
+                        <DisplayComments 
+                            data = {data.reviews}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

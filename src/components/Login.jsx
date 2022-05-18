@@ -4,6 +4,8 @@ import axios from '../axios'
 
 import '../App.css'
 import AuthContext from './AuthProvider';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../store/auth-slice';
 const Login = () => {
 
 
@@ -14,13 +16,17 @@ const Login = () => {
     const [success,setSuccess] = useState(false);
 
     const [currentUser,setCurrentUser] = useState();
-
+    
     const {setAuth} = useContext(AuthContext);     
 
-
+    
+    const dispatch = useDispatch();
 
     const handleLogin = async (e)=>{
         e.preventDefault();
+
+        //dispatch
+        
         try {
             
             const response = await axios.post("/login",
@@ -35,6 +41,11 @@ const Login = () => {
                 localStorage.setItem("token",JSON.stringify(d.data.token));
                 localStorage.setItem("user",JSON.stringify(d.data.user.role));
                 setAuth({role:d.data.user.role})
+                dispatch(authActions.login({
+                    role:d.data.user.role,
+                    username:d.data.user.username,
+                    
+                }));
             });
             
             setPassword('');
